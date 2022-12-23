@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2022 at 11:53 AM
+-- Generation Time: Dec 23, 2022 at 05:05 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -98,8 +98,8 @@ CREATE TABLE `add_patientfindings` (
 --
 
 INSERT INTO `add_patientfindings` (`a_id`, `a_user_id`, `a_fname`, `a_mname`, `a_lname`, `a_gender`, `a_age`, `a_complaint`, `a_historypresentillness`, `a_bp`, `a_rr`, `a_cr`, `a_temp`, `a_wt`, `a_pr`, `a_physicalexam`, `a_diagnosis`, `a_medication`, `a_physician_id`, `a_date`, `log_time`, `status`) VALUES
-(13, 1, 'Jenna', 'Castro', 'Hassan', 'Female', 26, 'asdasdd', '*Under Observation', '', '', '', '', '', '', 'a', 'a', 'a', 53, '2019-05-02', '2019-05-03 04:54:32', 0),
-(14, 1, 'James', 'Fernandez', 'Navarro', 'Male', 25, '', '*Under Observation', '', '', '', '', '', '', '', '', '', 54, '2019-05-02', '2019-05-02 15:36:34', 0);
+(13, 1, 'Jenna', 'Castro', 'Hassan', 'Female', 26, 'asdasdd', '*Under Observation', '', '', '', '', '', '', 'a', 'a', 'a', 1, '2019-05-02', '2022-12-23 13:16:30', 0),
+(14, 1, 'James', 'Fernandez', 'Navarro', 'Male', 25, '', '*Under Observation', '', '', '', '', '', '', '', '', '', 1, '2019-05-02', '2022-12-23 13:16:35', 0);
 
 -- --------------------------------------------------------
 
@@ -180,15 +180,14 @@ INSERT INTO `fieldsphysician` (`fp_id`, `fp_name`, `fp_description`) VALUES
 (2, 'Ophthalmologist', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
 (3, 'Surgeon', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
 (4, 'Pediatrician', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
-(5, 'Orthopedic.surgeon', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
+(5, 'Orthopedic Surgeon', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
 (6, 'General', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
 (7, 'Psychiatrist', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
 (8, 'Dermatologist', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
 (9, 'Endocrinologist', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
 (10, 'Gastroenterologist', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
 (11, 'Immunologist', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
-(12, 'Neurologist', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
-(13, 'Psychiatrist', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit');
+(12, 'Neurologist', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit');
 
 -- --------------------------------------------------------
 
@@ -224,7 +223,21 @@ INSERT INTO `findings` (`f_id`, `pr_findings_id`, `f_chiefcomplaint`, `f_history
 (33, 2, '', 'High Blood Pressure', '', '134/80', '', '', '', '', '', '', 'dizziness, headache', 'Exercise, Eat a low-sodium, low-fat diet, Eat potassium-rich foods ', 'Noa.Santiago', '2019-04-18'),
 (36, 1, '', 'Headache', '', '', '', '', '', '', '', '', 'vomiting', 'ibuprofen ', 'Jobelle.Castro', '2019-04-18'),
 (43, 2, '', '*Under Observation', '', '', '', '', '', '', '', '', '', '', '', '2019-05-02'),
-(44, 1, '', '*Under Observation', '', '', '', '', '', '', '', '', '', '', '', '2019-05-03');
+(44, 1, 'sad', '*Under Observation', '', '', '', '', '', '', '', '', '', '', ' Dr. Marilyn Teodor Madrid', '2019-05-03'),
+(45, 18, 'sadasdsa', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00'),
+(46, 1, 'Test', 'Test', '', '', '', '', '', '', '', 'Test', 'Test', 'Test', 'Dr. Marilyn Teodor Madrid', '2022-12-23'),
+(49, 1, 'sada', 'asdas', '', '', '', '', '', '', '', '', '', '', 'Dr. Marilyn Teodor Madrid', '2022-12-23'),
+(50, 1, 'sd', 'dhar', '', '', '', '  ', '', '', '', '', '', '', ' ', '2022-12-23'),
+(51, 1, 'ddd', 'ddddd', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00'),
+(53, 1, 'gtrg', 'gfd', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00'),
+(54, 1, '', 'wqe', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00'),
+(55, 14, 'dsad', 'asdasd', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00'),
+(56, 18, 'dsad', 'dasd', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00'),
+(57, 17, '', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00'),
+(58, 17, '', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00'),
+(59, 16, 'xc', 'd', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00'),
+(60, 15, 'eqwe', 'eqwe', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00'),
+(61, 13, 'sadasd', 'asda', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -425,23 +438,25 @@ CREATE TABLE `patient_record` (
   `pr_gen` varchar(255) NOT NULL,
   `pr_number` varchar(255) NOT NULL,
   `pr_religion` varchar(255) NOT NULL,
-  `pr_occup` varchar(255) NOT NULL,
-  `month` varchar(255) NOT NULL,
-  `year` varchar(255) NOT NULL
+  `pr_occup` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `patient_record`
 --
 
-INSERT INTO `patient_record` (`pr_id`, `pr_user_id`, `pr_date`, `pr_lname`, `pr_fname`, `pr_mname`, `pr_addrs`, `pr_age`, `pr_bdate`, `pr_bplace`, `pr_civilstat`, `pr_gen`, `pr_number`, `pr_religion`, `pr_occup`, `month`, `year`) VALUES
-(1, 1, '2019-03-13', 'Hassan', 'Jenna', 'Castro', 'San Carlos Heights Binangonan Rizal', 26, '1992-07-03', 'Cainta Rizal', 'Single', 'Female', '09293932931', 'Catholic', 'Call Center', 'Apr', '2019'),
-(2, 1, '2019-03-19', 'Navarro', 'James', 'Fernandez', 'Pantok Binangonan Rizal', 25, '1993-11-25', 'Angono Rizal', 'Single', 'Male', '09292342923', 'KIDKH', 'Merchandiser', 'Apr', '2019'),
-(3, 1, '2019-04-13', 'Cuevas', 'Justin', 'Aquino', 'San Carlos Binangonan Rizal', 29, '1998-05-27', 'Angono Rizal', 'Married', 'Male', '09292234122', 'Catholic', 'Factory Worker', 'Apr', '2019'),
-(4, 1, '2019-04-26', 'Castro', 'Chris', 'Moreno', 'San Carlos Heights Binangonan Rizal', 26, '1992-04-09', 'Cainta Rizal', 'Single', 'Male', '09023923020', 'Catholic', 'Factory Worker', 'Apr', '2019'),
-(5, 1, '2022-12-11', 'Grefiel', 'Dharlene', 'Ibon', 'Sta. Ana, Manila', 21, '2001-10-20', 'Manila', 'Single', 'Female', '09123456789', 'Catholic', 'Student', 'Dec', '2022'),
-(6, 1, '2022-12-11', 'Soler', 'Jomina Crista', 'Soler', 'Makati', 23, '1999-04-20', 'Manila', 'Single', 'Female', '09123456777', 'Catholic', 'Student', 'Dec', '2022'),
-(7, 1, '2022-12-11', 'Paraiso', 'Hanna Nicole', 'Santos', 'Tondo, Manila', 20, '2002-08-09', 'Manila', 'Single', 'Female', '09123456786', 'Catholic', 'Student', 'Dec', '2022');
+INSERT INTO `patient_record` (`pr_id`, `pr_user_id`, `pr_date`, `pr_lname`, `pr_fname`, `pr_mname`, `pr_addrs`, `pr_age`, `pr_bdate`, `pr_bplace`, `pr_civilstat`, `pr_gen`, `pr_number`, `pr_religion`, `pr_occup`) VALUES
+(1, 1, '2019-03-13', 'Grefiel', 'Dharlene', 'Ibon', 'Manila', 21, '2022-12-21', 'Manila', 'Single', 'Female', '09293932931', 'Catholic', 'Call Center'),
+(2, 1, '2019-03-19', 'Grefiel', 'Irene', 'Ibon', 'Manila', 60, '2022-12-21', 'Manila', 'Married', 'Female', '09292342923', 'Catholic', 'Merchandiser'),
+(3, 1, '2019-04-13', 'Soler', 'Jomina Crista', 'Delos Santos', 'Makati', 23, '2022-12-21', 'Manila', 'Single', 'Female', '09292234122', 'Catholic', 'Factory Worker'),
+(4, 1, '2019-04-26', 'Castro', 'Cherilu', 'Molina', 'Tondo', 21, '2022-12-21', 'Manila', 'Single', 'Female', '09023923020', 'Catholic', 'Factory Worker'),
+(12, 0, '0000-00-00', 'Paraiso', 'Hanna Nicole', 'Santos', 'Tondo, Manila', 20, '2022-12-21', 'Manila', 'Single', 'Female', '9619916193', 'Catholic', 'Student'),
+(13, 0, '0000-00-00', 'Amparo', 'Nicole Alexandria', 'De Luna', 'Manila', 21, '2022-12-21', 'Manila', 'Single', 'Female', '9619916193', 'Catholic', 'Student'),
+(14, 0, '0000-00-00', 'Grefiel', 'A', 'Ibon', 'Manila', 21, '2022-12-21', 'Manila', 'Single', 'Female', '09619916193', 'Catholic', 'Student'),
+(15, 0, '0000-00-00', 'Grefiel', 'B', 'Ibon', 'Manila', 21, '2022-12-21', 'Manila', 'Single', 'Female', '09101314386', 'Catholic', 'Housekeeper'),
+(16, 0, '2022-12-21', 'Grefiel', 'C', 'Ibon', 'Manila', 21, '2022-12-21', 'Manila', 'Single', 'Female', '09619916193', 'Catholic', 'None'),
+(17, 0, '2022-12-21', 'Grefiel', 'D', 'Ibon', 'Manila', 21, '2022-12-21', 'Manila', 'Single', 'Female', '09619916193', 'Catholic', 'Student'),
+(18, 0, '2022-12-21', 'Grefiel', 'F', 'Ibon', 'Manila', 21, '2022-12-21', 'Manila', 'Single', 'Female', '09619916193', 'Catholic', 'Student');
 
 -- --------------------------------------------------------
 
@@ -454,25 +469,29 @@ CREATE TABLE `physicians` (
   `d_lname` varchar(255) NOT NULL,
   `d_fname` varchar(255) NOT NULL,
   `d_mname` varchar(255) NOT NULL,
+  `d_address` varchar(255) NOT NULL,
   `d_gen` varchar(255) NOT NULL,
   `d_age` int(11) NOT NULL,
-  `d_pos` varchar(255) NOT NULL,
-  `d_add` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `d_number` varchar(12) NOT NULL,
+  `d_field` varchar(255) NOT NULL,
+  `d_ward` varchar(255) NOT NULL,
+  `d_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `physicians`
 --
 
-INSERT INTO `physicians` (`d_id`, `d_lname`, `d_fname`, `d_mname`, `d_gen`, `d_age`, `d_pos`, `d_add`) VALUES
-(1, 'Madrid', 'Marilyn', 'Teodor', 'Female', 30, 'Pedeatrician', '2022-12-06 03:56:58'),
-(2, 'Santiago', 'Noa', 'Felix', 'Male', 28, 'Dermatologist', '2022-12-06 04:09:36'),
-(3, 'Santos', 'James', 'Gomez', 'Male', 38, 'Ophthalmologist', '2022-12-06 04:01:50'),
-(4, 'Gomez', 'John', 'Adams', 'Male', 31, 'Orthopedic Surgeon', '2022-12-06 04:08:29'),
-(5, 'Castro', 'Jobelle', 'Villanueva', 'Female', 29, 'Psychiatrist', '2022-12-06 04:08:36'),
-(6, 'Cruz', 'Maria', 'Romance', 'Female', 34, 'Gynecologist', '2022-12-06 04:10:08'),
-(7, 'Lopez', 'Gabriel', 'Lacson', 'Male', 37, 'Surgeon', '2022-12-06 04:10:38'),
-(8, 'Monton', 'Juan', 'Manalo', 'Male', 36, 'Emergency Medicine Specialist', '2022-12-06 04:09:28');
+INSERT INTO `physicians` (`d_id`, `d_lname`, `d_fname`, `d_mname`, `d_address`, `d_gen`, `d_age`, `d_number`, `d_field`, `d_ward`, `d_date`) VALUES
+(1, 'Alvarez', 'Samantha', 'Manalo', 'Tondo, Manila', 'Female', 22, '09876543213', 'Pediatrician', 'Pedia', '2022-12-23'),
+(2, 'Grefiel', 'Dhar', 'Ibon', 'Tondo, Manila', 'Female', 22, '09101314386', 'Surgeon', 'Orthopedic Surgeon', '2022-12-23'),
+(3, 'Aguilar', 'Christine', 'Jaime', 'Tondo', 'Female', 22, '09619916193', 'Psychiatrist', 'Male Ward', '2022-12-23'),
+(4, 'De Guzman', 'Clyden John', 'Santos', 'Tondo, Manila', 'Male', 22, '09123456723', 'Psychiatrist', 'Male Ward', '2022-12-23'),
+(5, 'Soler', 'Amy', 'Genetia', 'Makati', 'Female', 22, '09213456789', 'Dermatologist', 'Female Ward', '2022-12-23'),
+(45, 'Bernardo', 'Crizelle Ann', 'Molina', 'Mandaluyong', 'Female', 25, '09827436837', 'General', 'Pulmonary', '2022-12-23'),
+(46, 'Dela Cruz', 'Juan', 'Genetia', 'San Andres, Manila', 'Male', 26, '09483729174', 'Neurologist', 'ICU', '2022-12-23'),
+(47, 'Raquiza', 'Elvira', 'Lim', 'Manila', 'Female', 43, '09124563453', 'Gynecologist', 'Caesarian Section', '2022-12-23'),
+(48, 'Recio', 'Abygail', 'Yu', 'Makati', 'Female', 50, '09263847263', 'Gynecologist', 'OB-Gyne', '2022-12-23');
 
 -- --------------------------------------------------------
 
@@ -500,6 +519,26 @@ INSERT INTO `standardusers` (`su_id`, `su_userid`, `su_user`, `su_pass`, `su_fna
 (52, 1, 'juan', '$2y$12$IKToBmzw43SRz7tOXHcpSemnBizmxMFPv8g017JmO.Hp6PrN.yLJ.', 'Juan', 'Doctor', '2019-04-29 01:49:56'),
 (53, 1, 'jobelle', '$2y$12$7ryPDjB4QM5RJzH3tcyu.uEEe82Is0Mq5eX3rmuKSkIBOsSpa49CC', 'Jobelle', 'Doctor', '2019-05-01 06:49:30'),
 (54, 1, 'gabriel', '$2y$12$Dk9NNuBkqv9WvPwNJp9BuOYySQdfpvxkv9rtcDGwl9XTCALPIvgsi', 'Gabriel', 'Doctor', '2019-05-01 16:52:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `u_id` int(11) NOT NULL,
+  `u_username` varchar(255) NOT NULL,
+  `u_password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`u_id`, `u_username`, `u_password`) VALUES
+(1, 'admin', 'b0baee9d279d34fa1dfd71aadb908c3f'),
+(2, 'admin2', '12345');
 
 -- --------------------------------------------------------
 
@@ -543,18 +582,18 @@ CREATE TABLE `wards` (
 --
 
 INSERT INTO `wards` (`w_id`, `w_name`, `w_description`) VALUES
-(1, 'Male Ward', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
+(1, 'Male Ward', 'Lorem ipsum dolor sit amet'),
 (2, 'Female Ward', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
 (3, 'Pulmonary', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
-(4, 'ICU', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
-(5, 'Gyne', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
+(5, 'Orthopedic Surgeon', 'Lorem ipsum dolor sit amet, consectetur adipiscing'),
 (6, 'Caesarian Section', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
 (7, 'NSD', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
-(8, 'MaleSurgical', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
-(9, 'FemaleSurgical', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
-(10, 'Pedia', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
+(8, 'Male Surgical', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
+(9, 'Female Surgical', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
 (11, 'OB-Gyne', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
-(13, '*Under.Observation', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit');
+(13, '*Under.Observation', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
+(15, 'Pedia', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'),
+(16, 'ICU', 'Lorem ipsum dolor sit amet');
 
 --
 -- Indexes for dumped tables
@@ -645,6 +684,12 @@ ALTER TABLE `standardusers`
   ADD PRIMARY KEY (`su_id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`u_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -688,13 +733,13 @@ ALTER TABLE `civilstat`
 -- AUTO_INCREMENT for table `fieldsphysician`
 --
 ALTER TABLE `fieldsphysician`
-  MODIFY `fp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `fp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `findings`
 --
 ALTER TABLE `findings`
-  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `gender`
@@ -730,19 +775,25 @@ ALTER TABLE `oldfindings`
 -- AUTO_INCREMENT for table `patient_record`
 --
 ALTER TABLE `patient_record`
-  MODIFY `pr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `pr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `physicians`
 --
 ALTER TABLE `physicians`
-  MODIFY `d_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `d_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `standardusers`
 --
 ALTER TABLE `standardusers`
   MODIFY `su_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -754,7 +805,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `wards`
 --
 ALTER TABLE `wards`
-  MODIFY `w_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `w_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

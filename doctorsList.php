@@ -44,8 +44,6 @@
 							<th>Last Name</th>
 							<th>First Name</th>
 							<th>Middle Name</th>
-							<th>Gender</th>
-							<th>Age</th>
 							<th>Field</th>
 							<th>Ward</th>
 							<th>Date Added</th>
@@ -60,8 +58,6 @@
 									<td><?= $record['d_lname'];?></td>
 									<td><?= $record['d_fname'];?></td>
 									<td><?= $record['d_mname'];?></td>
-									<td><?= $record['d_gen'];?></td>
-									<td><?= $record['d_age'];?></td>
 									<td><?= $record['d_field'];?></td>
 									<td><?= $record['d_ward'];?></td>
 									<td><?= $record['d_date'];?></td>
