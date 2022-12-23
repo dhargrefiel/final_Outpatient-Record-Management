@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+:root {
+    --blue: #0C407A;
+    --lightblue: #16c2d5;
+    --white: #fff;
+    --grey: #f5f5f5;
+    --grey2: #F5F7FB;
+    --black1: #222;
+    --black2: #999;
+    
+}
+body {
+    min-height: 100wh;
+    overflow-x: hidden;
+}
+.container {
+    position: relative;
+    width: 100%;
+}
+.title1 {
+    font-weight: 1000;
+    font-size: 1.4em;
+    color: var(--white);
+    margin: 5px 10px;
+    margin-top: 19px;
+}
+.navigation1 {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--blue);
+    border-left: 10px solid var(--blue);
+    transition: 0.5s;
+    overflow: hidden;
+}
+.navigation1 .active {
+    width: 80px;
+    background: var(--grey2);
+
+}
+.navigation1 ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+}
+.navigation1 ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+.navigation1 ul li:hover,
+.navigation1 ul li.hovered {
+    background: var(--grey2);
+}
+.navigation1 ul li:nth-child(1) {
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+.navigation1 ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white)
+}
+.navigation1 ul li:hover a, 
+.navigation1 ul li.hovered a {
+    color: var(--blue);
+}
+.navigation1 ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 70px;
+    text-align: center;
+}
+.navigation1 ul li a .icon ion-icon{
+    font-size: 1.8em;
+    margin-top: 12px;
+}
+.navigation1 ul li a .title {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60 px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+
+/* curve outside 
+.navigation1 ul li:hover a::before,
+.navigation1 ul li.hovered a::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--grey2);
+    pointer-events: none;
+}
+.navigation1 ul li:hover a::after,
+.navigation1 ul li.hovered a::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--grey2);
+    pointer-events: none;
+}*/
+
+
+/* main */
+.main1 {
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: var(--grey2);
+    transition: 0.5s;
+}
+.main1.active{
+    width: calc(100% - 80px);
+    left: 80px;
+}
+.topbar {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    background: var(--white);
+}
+.toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    cursor: pointer;
+}
+.search{
+    position: relative;
+    width: 400px;
+    margin: 0 10px;
+}
+.search label{
+    position: relative;
+    width: 100%;
+}
+.search label input{
+    width: 100%;
+    background-color: var(--grey);
+    height: 40px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 18px;
+    outline: none;
+    border: 0px solid var(--black2);
+}
+.search label ion-icon{
+    margin-top: 7px;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 1.5em;
+}
+
+.cardBox {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 20px;
+}
+.cardBox .card1 {
+    position: relative;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.3);
+}
+.cardBox .card1 .numbers {
+    position: relative;
+    font-weight: 500;
+    font-size: 2em;
+    color: var(--blue)
+}
+.cardBox .card1 .cardName {
+    font-size: 1.1em;
+    color: var(--black2);
+    margin-top: 5px;
+
+}
+.cardBox .card1 .iconBx {
+    font-size: 4em;
+    color: var(--lightblue)
+}
+.cardBox .card1:hover {
+    background: var(--blue);
+}
+.cardBox .card1:hover .numbers, 
+.cardBox .card1:hover .cardName, 
+.cardBox .card1:hover .iconBx {
+    color: var(--white);
+    text-decoration: none;
+    
+}
+.details {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 30px;
+    margin-top: 10px;
+}
+.details .recentOrders {
+    position: relative;
+    display: grid;
+    min-height: 500px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+.details1 {
+    position: relative;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px;
+}
+.details1 .recentOrders {
+    position: relative;
+    display: grid;
+    min-height: 500px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.cardHeader h2 {
+    font-weight: 600;
+    color: var(--blue);
+
+}
+.btn-success:hover {
+    background-color: #16c2d5 !important;
+    border-color: #16c2d5 !important;
+  }
+.cardBox2 {
+    position: relative;
+    width: 100%;
+    display: block;
+}
+.cardBox2 .card2 {
+    position: relative;
+    background: var(--white);
+    height: 70px;
+    padding-left: 20px;
+    padding-top: 10px;
+    border-radius: 15px;
+    display: flex;
+    cursor: pointer;
+    border: 1px solid black;
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.3);
+}
+.cardBox2 .card2 .numbers {
+    padding-top: 5px;
+    padding-left: 20px;
+    font-weight: 500;
+    font-size: 1.5em;
+    color: var(--blue)
+}
+.cardBox2 .card2 .cardName {
+    font-size: 0.8em;
+    color: var(--black2);
+
+}
+.cardBox2 .card2 .iconBx {
+    font-size: 2.5em;
+    color: var(--blue)
+}
+td {
+    padding-left: 10px !important;
+}
+.textColorBlue {
+    color: var(--lightblue) !important;
+}
