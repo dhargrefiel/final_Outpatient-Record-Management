@@ -71,7 +71,7 @@
 											<i class="fa fa-eye"></i></a>
 										<a href="patientRecordsUpdate.php?pr_id=<?=$record['pr_id'];?>" class="mr-4" title="Update Record" data-toggle="tooltip">
 											<i class="fa fa-edit"></i></a>	
-										<div id="del" style="display: inline;" >
+										<div style="display: inline;" >
 											<a href="#" onclick="$('.delete_id').val('<?=$record['pr_id'];?>')" data-id="<?=$record['pr_id'];?>" data-toggle="modal"  data-target="#delPatientRecordModal"  title='Delete Record' data-toggle='tooltip' >
 												<i class="fas fa-trash-alt"></i></a>
 											</a>

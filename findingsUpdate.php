@@ -210,10 +210,10 @@
                                             </div>
                                         </div>
                                         <select name="a_physician" class="form-control">
-                                            <option value=""><?= $findingsRecords['f_nameofphysician']?></option>
+                                            <option value="<?= $findingsRecords['f_nameofphysician']?>"><?= $findingsRecords['f_nameofphysician']?></option>
                                             <?php if($doctorRecords){ $counter = 0; ?>
                                                 <?php foreach($doctorRecords as $record): $counter += 1;?>
-                                                    <option>Dr. <?= $record['d_fname'];?> <?= $record['d_mname'];?> <?= $record['d_lname'];?></option>
+                                                    <option><?= $record['d_fname'];?> <?= $record['d_mname'];?> <?= $record['d_lname'];?></option>
                                                 <?php endforeach; ?>
                                             <?php } ?>
                                         </select>

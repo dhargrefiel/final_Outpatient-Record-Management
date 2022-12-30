@@ -10,6 +10,7 @@
   $patientRecords = $outpatient->getPatientRecord();
   $patientFindings = $outpatient->getPatientFindings();
   $deleteFindingsRecords = $outpatient->deleteFindingsRecord();
+  $getPhysicianID = $outpatient->getPhysicianID();
 
   ob_end_flush();
 ?>
@@ -213,7 +214,7 @@
                     <td><?= $record['f_historypresentillness'];?></td>
                     <td><?= $record['f_date'];?></td>
                     <td class='text-center'>
-                      <a href="findingsView.php?pr_id=<?=$patientRecords['pr_id'];?>&f_id=<?=$record['f_id'];?>"
+                      <a href="findingsView.php?pr_id=<?=$patientRecords['pr_id'];?>&f_id=<?=$record['f_id'];?>&name=<?=$record['f_nameofphysician'];?>"
                         class="mr-4" title="View Record" data-toggle="tooltip">
                         <i class="fa fa-eye"></i></a>
                       <a href="findingsUpdate.php?pr_id=<?=$patientRecords['pr_id'];?>&f_id=<?=$record['f_id'];?> " class="mr-4"

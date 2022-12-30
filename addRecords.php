@@ -109,7 +109,7 @@
                                             <div class="col-sm-4">
                                                 <?php echo 'Blood Pressure'; ?>
                                                 <input class="form-control" type="text" name="a_bp"
-                                                    value="" placeholder="BP">
+                                                    placeholder="BP">
                                             </div>
                                             <div class="col-sm-4">
                                                 <?php echo 'Respiratory Rate'; ?>
@@ -171,7 +171,7 @@
                                         </div>
                                     </div>
 
-                                    <div style="margin-top:40px;">
+                                    <div>
                                         <div class="row no-gutters">
                                             <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
                                                 Diagnosis</div>
@@ -185,7 +185,7 @@
                                         </div>
                                     </div>
 
-                                    <div style="margin-top:40px;">
+                                    <div style="margin-top:20px;">
                                         <div class="row no-gutters">
                                             <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
                                                 Medication/Treatment</div>
@@ -213,7 +213,7 @@
                                             <option value="">Select Physician</option>
                                             <?php if($doctorRecords){ $counter = 0; ?>
                                                 <?php foreach($doctorRecords as $record): $counter += 1;?>
-                                                    <option>Dr. <?= $record['d_fname'];?> <?= $record['d_mname'];?> <?= $record['d_lname'];?></option>
+                                                    <option><?= $record['d_fname'];?> <?= $record['d_mname'];?> <?= $record['d_lname'];?></option>
                                                 <?php endforeach; ?>
                                             <?php } ?>
                                         </select>

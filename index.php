@@ -104,8 +104,9 @@ if(isset($messages)){
             <i class="fas fa-lock"></i>
           </div>
           <div class="div">
-            <input type="password" name="password" class="form-control input" placeholder="Password" />
+            <input type="password" name="password" class="form-control input" autocomplete="current-password" required=""  placeholder="Password" id="id_password">
           </div>
+          
         </div>
         <div class="text-center pt-1 mb-5 pb-1">
           
@@ -150,6 +151,17 @@ if(isset($messages)){
 
 <script>
   $('.alert').alert();
+
+  const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#id_password');
+
+  togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
 </script>
 </body>
 

@@ -238,6 +238,61 @@ Class Hardware {
         return $findings;
         
     }
+    public function getPhysicianID(){
+        $name = trim($_GET["name"]);
+        $arrayString= explode(" ", $name); // split string with space (white space) as a delimiter.
+        $fname = $arrayString[0];
+        $lname = end($arrayString);
+
+        $connection = $this->openConnection();
+        $sql = $connection->prepare("SELECT d_id FROM physicians WHERE d_fname LIKE '$fname%' and d_lname LIKE '$lname%' ");
+        $sql->execute();
+        $physicianID = $sql->fetch();
+
+        return $physicianID;
+    }
+
+
+    //add findings to Doctor's Record
+    public function addToDoctor() {
+        $pr_id =  trim($_GET["pr_id"]);
+        $f_id =  trim($_GET["f_id"]);
+
+        if(isset($_POST['addRecordToDoctor'])){
+            $a_user_id =  $pr_id;
+            $a_fname =  $_POST['f_pr_fname'];
+            $a_mname =  $_POST['f_pr_mname'];
+            $a_lname =  $_POST['f_pr_lname'];
+            $a_gender = $_POST['f_pr_gender'];
+            $a_age = $_POST['f_pr_age'];
+            $a_complaint = $_POST['f_chiefcomplaint'];
+            $a_historypresentillness =  $_POST['f_historypresentillness'];
+            $a_bp = $_POST['f_bp'];
+            $a_rr = $_POST['f_rr'];
+            $a_cr = $_POST['f_cr'];
+            $a_temp = $_POST['f_temp'];
+            $a_wt = $_POST['f_wt'];
+            $a_pr = $_POST['f_pr'];
+            $a_physicalexam = $_POST['f_physicalexam'];
+            $a_diagnosis = $_POST['f_diagnosis'];
+            $a_medication = $_POST['f_medication'];
+            $a_date = $_POST['f_date'];
+            $a_physician_id = $_POST['f_IDofphysician'];
+
+            $connection = $this->openConnection();
+            $sql = $connection->prepare("INSERT INTO add_patientfindings 
+            (a_user_id, a_fname, a_mname, a_lname, a_gender, a_age, a_complaint, a_historypresentillness, a_bp, a_rr, a_cr,
+            a_temp, a_wt, a_pr, a_physicalexam, a_diagnosis, a_medication, a_date, a_physician_id)
+            VALUES ('$a_user_id', '$a_fname', '$a_mname', '$a_lname ', '$a_gender', '$a_age', '$a_complaint', '$a_historypresentillness', '$a_bp', '$a_rr', '$a_cr',
+            '$a_temp', '$a_wt', '$a_pr', '$a_physicalexam', '$a_diagnosis', '$a_medication', '$a_date', '$a_physician_id')
+            ");
+
+            $sql->execute();
+            $_SESSION['message'] = "Record Added Successfully";
+            header('location: doctorRecordsView.php?d_id='.$a_physician_id);
+        }
+
+    }
 
     // Update Findings Record [findingsUpdate.php]
     public function updateFindingsRecord() {
@@ -275,7 +330,7 @@ Class Hardware {
             f_physicalexam = '$a_physicalexam', 
             f_diagnosis = '$a_diagnosis', 
             f_medication = '$a_medical_treatment', 
-            f_nameofphysician = ' $a_physician'
+            f_nameofphysician = '$a_physician'
             
             WHERE f_id = '$id' ");
             $sql->execute();
@@ -358,9 +413,48 @@ Class Hardware {
             $a_medical_treatment = $_POST['a_medical_treatment'];
             $a_physician = $_POST['a_physician'];
 
+            if(empty($a_chief_complaint)){
+                $a_chief_complaint = 'N/A';
+            }
+            if(empty($a_historyillness)){
+                $a_historyillness = 'N/A';
+            }
+            if(empty($a_physicalexam)){
+                $a_physicalexam = 'N/A';
+            } 
+            if(empty($a_diagnosis)){
+                $a_diagnosis = 'N/A';
+            } 
+            if(empty($a_medical_treatment)){
+                $a_medical_treatment = 'N/A';
+            }
+            if(empty($a_physician)){
+                $a_physician = 'N/A';
+            }
+            if(empty($a_bp)){
+                $a_bp = 'N/A';
+            }                
+            if(empty($a_rr)){
+                $a_rr = 'N/A';
+            }
+            if(empty($a_cr)){
+                $a_cr = 'N/A';
+            }
+            if(empty($a_temp)){
+                $a_temp = 'N/A';  
+            }                
+            if(empty($a_wt)){
+                $a_wt = 'N/A';
+            }                
+            if(empty($a_pr)){
+                $a_pr = 'N/A';
+            }
+                
+             
+
             $connection = $this->openConnection();
             $sql = $connection->prepare("INSERT INTO findings (pr_findings_id, f_chiefcomplaint, f_historypresentillness, f_bp, f_rr, f_cr, f_temp, f_wt, f_pr, f_date, f_physicalexam, f_diagnosis, f_medication, f_nameofphysician)
-            VALUES ('$a_casenumber', '$a_chief_complaint','$a_historyillness', '$a_bp', '$a_rr', '$a_cr', '$a_temp', '$a_wt', '$f_pr', '$a_date', '$a_physicalexam', '$a_diagnosis', '$a_medical_treatment', '$a_physician')");
+            VALUES ('$a_casenumber', '$a_chief_complaint','$a_historyillness', '$a_bp', '$a_rr', '$a_cr', '$a_temp', '$a_wt', '$a_pr', '$a_date', '$a_physicalexam', '$a_diagnosis', '$a_medical_treatment', '$a_physician')");
             
             $sql->execute();
             $_SESSION['message'] = "Record Added Successfully";

@@ -4,13 +4,6 @@
   require_once('footer.html');
   //set title
   echo "<script>setTimeout(function(){var tts = document.getElementsByTagName(\"title\");if(tts.length > 0)tts[0].innerHTML=\"Change Password\"; else {var tt0 = document.createElement(\"TITLE\"); tt0.innerHTML = \"My title\"; document.head.appendChild(tt0);}}, 200);</script>";
-
-	// Redirect the user to login page if he is not logged in.
-	/*if(!isset($_SESSION['loggedIn'])){
-		header('Location: login.php');
-		exit();
-	}*/
-
  
   ob_end_flush();
 ?>
