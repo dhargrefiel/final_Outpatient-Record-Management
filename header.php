@@ -1,7 +1,7 @@
 <?php
 	require_once "mainBackend.php";
   $outpatient = new Hardware();
-  $messages = $outpatient->message();
+  $messages = $outpatient->message(); 
   $users = $outpatient->header_user();
 ?>
 <!DOCTYPE html>
@@ -111,10 +111,13 @@
     <!-- main -->
     <div class="main1">
         <!-- Topbar -->
+        
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+          
           <div class="toggle">
             <ion-icon name="menu-outline"></ion-icon>
           </div>
+          
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -125,7 +128,7 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false"> 
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                  <?= $users['u_username'];?>
+                  <b> <?= $users['u_username'];?> </b>
                 </span>
               </a>
               <!-- Dropdown - User Information -->
@@ -133,6 +136,10 @@
                 <a class="dropdown-item" href="changePass.php">
                   <i class="fas fa-fw fa-key mr-2 text-gray-400"></i>
                   Change Password
+                </a>
+                <a class="dropdown-item" href="addAdmin.php">
+                  <i class="fas fa-fw fa-user mr-2 text-gray-400"></i>
+                  Add Admin User
                 </a>
 
                 <div class="dropdown-divider"></div>
@@ -145,7 +152,9 @@
                   </a>
               </div>
             </li>
-
+            
           </ul>
 
+
+          
         </nav>

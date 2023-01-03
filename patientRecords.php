@@ -72,12 +72,14 @@
 										<a href="patientRecordsUpdate.php?pr_id=<?=$record['pr_id'];?>" class="mr-4" title="Update Record" data-toggle="tooltip">
 											<i class="fa fa-edit"></i></a>	
 										<div style="display: inline;" >
-											<a href="#" onclick="$('.delete_id').val('<?=$record['pr_id'];?>')" data-id="<?=$record['pr_id'];?>" data-toggle="modal"  data-target="#delPatientRecordModal"  title='Delete Record' data-toggle='tooltip' >
+											<a href="#" onclick="$('.delete_id').val('<?=$record['pr_id'];?>')" 
+											data-id="<?=$record['pr_id'];?>" data-toggle="modal"  data-target="#delPatientRecordModal"  
+											title='Delete Record' >
 												<i class="fas fa-trash-alt"></i></a>
 											</a>
 										</div>
 										<!-- Delete Patient Record Modal-->
-										<div class="modal fade" id="delPatientRecordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+										<div class="modal fade" id="delPatientRecordModal" tabindex="-1" role="dialog" 
 											aria-hidden="true">
 											<div class="modal-dialog" role="document">
 											<div class="modal-content">
@@ -95,7 +97,8 @@
 
 												<div class="modal-footer">
 													<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-													<button name="deletePatientRecord" onclick="deleteRecord()" type="submit" class="btn btn-success btn-icon-split">
+													<button name="deletePatientRecord" onclick="deleteRecord()" type="submit" 
+													class="btn btn-success btn-icon-split">
 														<span class="icon text-white-100">Delete</span>
 													</button>
 												</div>

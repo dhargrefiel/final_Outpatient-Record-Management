@@ -10,8 +10,9 @@
 
   require_once('mainBackend.php');
   $outPatient = new Hardware();
-  $user = $outPatient->loginUser();
   $messages = $outPatient->message();
+  $user = $outPatient->loginUser();
+
   
 ?>
 
@@ -115,10 +116,10 @@ if(isset($messages)){
           
           <a class=" text-center  text-muted" href="#!">Forgot password?</a>
         </div>
-        <div class="d-flex align-items-center justify-content-center pb-4">
+        <!-- <div class="d-flex align-items-center justify-content-center pb-4">
           <p class="mb-0 me-2">Don't have an account? &nbsp </p>
           <a type="button" class="createAcc"> Register </a>
-        </div>
+        </div> -->
 
       </form>
 

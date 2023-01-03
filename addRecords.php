@@ -78,7 +78,7 @@
                                             <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
                                                 Chief Complaint</div>
                                         </div>
-                                        <div class="h5 mb-1 font-weight-bold text-gray-800"><textarea
+                                        <div class="h5 mb-1 font-weight-bold text-gray-800"><textarea required
                                                 class="form-control" type="text" name="a_chief_complaint"
                                                 placeholder="Enter Chief Complaint"></textarea>
                                         </div>
@@ -90,7 +90,7 @@
                                                 History of Present Illness</div>
                                         </div>
                                         <div class="h5 mb-1 font-weight-bold text-gray-800">
-                                            <input
+                                            <input required
                                                 class="form-control <?php echo (!empty($a_historyillness)) ? 'is-invalid' : ''; ?>"
                                                 type="text" name="a_historyillness"
                                                 value=""
@@ -209,7 +209,7 @@
                                                 Attending Physician
                                             </div>
                                         </div>
-                                        <select name="a_physician" class="form-control">
+                                        <select required name="a_physician" class="form-control">
                                             <option value="">Select Physician</option>
                                             <?php if($doctorRecords){ $counter = 0; ?>
                                                 <?php foreach($doctorRecords as $record): $counter += 1;?>
@@ -250,42 +250,4 @@
     </div>
 </div>
 
-<script>
-    $(document).ready(function () {
 
-        $('#medicalfield').change(function () {
-            var fp_id = $('#medicalfield').val();
-            if (fp_id != '') {
-                $.ajax({
-                    url: "<?php echo base_url(); ?>admissioncontrol/get_physician",
-                    method: "POST",
-                    data: {
-                        fp_id: fp_id
-                    },
-                    success: function (data) {
-                        $('#physician').html(data);
-                    }
-                });
-            } else {
-                $('#physician').html('<option value="">Select Physician</option>');
-            }
-        });
-
-    });
-</script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-// Listen to saleID text box in sale details tab
-	$('#saleDetailsSaleID').keyup(function(){
-		showSuggestions('saleDetailsSaleID', showSaleIDSuggestionsFile, 'saleDetailsSaleIDSuggestionsDiv');
-	});
-	
-	// Remove the SaleID suggestions dropdown in the sale details tab
-	// when user selects an item from it
-	$(document).on('click', '#saleDetailsSaleIDSuggestionsList li', function(){
-		$('#saleDetailsSaleID').val($(this).text());
-		$('#saleDetailsSaleIDSuggestionsList').fadeOut();
-		getSaleDetailsToPopulate();
-	});

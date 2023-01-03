@@ -161,7 +161,13 @@
       <!-- Details -->
       <div class="card shadow mb-4">
         <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold textColorBlue">Details </h6>
+          <h6 class="m-0 font-weight-bold textColorBlue">Details 
+          <a style="float: right; text-decoration:none;"
+            href="doctorRecordsUpdate.php?d_id=<?=$record['d_id'];?>" class="text-secondary"
+            title="Update Record" data-toggle="tooltip">
+            <i class="fa fa-edit"></i>
+          </a>
+          </h6>
         </div>
         <div class="card-body">
           <!--Card Body begin tag  -->

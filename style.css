@@ -67,7 +67,6 @@ body{
 .box .section2 {
   position: relative;
   min-height: 500px;
-  background: var(--white);
   justify-content: flex-start;
 	align-items: center;
 	text-align: center;

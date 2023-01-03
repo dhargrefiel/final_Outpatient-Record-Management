@@ -24,7 +24,7 @@
   $getDoctorRecords = $outpatient->getDoctorRecord();
   $getDoctorFindings = $outpatient->getDoctorFindings();
   $findingsRecords = $outpatient->findingsRecord();
-  $message = $outpatient->message();
+  
   ob_end_flush();
 ?>
 

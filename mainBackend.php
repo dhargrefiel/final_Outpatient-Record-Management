@@ -38,7 +38,7 @@ Class Hardware {
 
     public function loginUser(){
 		$user = "";
-		// unset($_SESSION['message']);
+		unset($_SESSION['message']);
 		if (isset($_POST['login_user'])) {
 			$username = $_POST['username'];
 			$password = md5($_POST['password']);
@@ -48,7 +48,6 @@ Class Hardware {
 
 			} else {
 				$connection = $this->openConnection();
-                $password1 = SHA1('$password');
 				$sql = $connection->prepare("SELECT * FROM user WHERE u_username = '$username' AND u_password = '$password' ");
 				$sql->execute();
 				$user = $sql->fetch();
@@ -60,8 +59,7 @@ Class Hardware {
 					$_SESSION['username'] = $username;
                     header('location:dashboard.php');
 				} else {
-					header('location:index.php');
-                    
+					header('location:index.php');                    
 					$_SESSION['message'] = "Invalid credentials. Please try again.";
 					$user = null;
 				}
@@ -77,6 +75,7 @@ Class Hardware {
 		}
 	}
 
+    //----------------HEADER--------------------
 
     public function header_user(){
         if ($_SESSION['authentication']) {
@@ -87,10 +86,80 @@ Class Hardware {
             $userinfo = $sql->fetch();
             return $userinfo;
         } else {
+            unset($_SESSION['message']);
 			header ('location:index.php');
 		}
 	}
 
+    public function changePassword(){
+        unset($_SESSION['message']);
+        
+
+        if(isset($_POST['changePassword'])){
+            $oldPass = $_POST['oldpass'];
+            $d_oldPass = md5($oldPass);
+            $newPass = $_POST['newpass'];
+            $d_newPass = md5($newPass);
+            $confPass = $_POST['cpass'];
+            $id = $_SESSION['id'];
+
+            $connection = $this->openConnection();
+            $sql = $connection->prepare("SELECT u_password FROM user WHERE u_id = '$id'");
+            $sql->execute();
+            $u_password = $sql->fetch();
+
+            if($d_oldPass == $u_password["u_password"]){
+                // Validate password strength
+                $uppercase    = preg_match('@[A-Z]@', $newPass);
+                $lowercase    = preg_match('@[a-z]@', $newPass);
+                $number       = preg_match('@[0-9]@', $newPass);
+
+                if (!$uppercase || !$lowercase || !$number || strlen($newPass) < 8) {\
+                    header('location:changePass.php');
+                    $_SESSION['message'] = "Password is not strong.";
+                } 
+                else {
+                    //check if new password is equal to confirm password
+                    if($newPass != $confPass){
+                        header('location:changePass.php');
+                        $_SESSION['message'] = "Your confirmed password did not match.";
+                    } 
+                    else {        
+                            $connection2 = $this->openConnection();
+                            $sql2 = $connection->prepare("UPDATE user SET u_password = '$d_newPass' WHERE u_id = '$id' ");
+                            $sql2->execute();
+                            $_SESSION['message'] = "Password Updated Successfully.";
+                            header('location:changePass.php');
+                        }
+                        
+                    }
+            }
+            else {
+                header('location:changePass.php');
+                $_SESSION['message'] = "Old password did not match any record.";
+            }
+
+        }
+    }
+
+    public function addAdmin(){
+        unset($_SESSION['message']);
+
+        if(isset($_POST['addAdmin'])){
+            $email = $_POST['email'];
+            $uname = $_POST['username'];
+            $password = $_POST['password'];
+            $d_password = md5($password);
+
+            $connection = $this->openConnection();
+            $sql = $connection->prepare("INSERT INTO user (u_username, u_password, u_email)
+            VALUES ('$uname', '$d_password', '$email') ");
+            $sql->execute();
+            
+            $_SESSION['message'] = "User Added Successfully";
+            header('location: addAdmin.php');
+        }
+    }
     //----------------DASHBOARD--------------------
 
     //statistics
@@ -101,7 +170,6 @@ Class Hardware {
         $sql = $connection->prepare("SELECT * FROM patient_record");
         $sql->execute();
         $patientRecordCount = $sql->rowCount();
-        $_SESSION['message'] = "INVALID CREDENTIALS";
         return $patientRecordCount;
         } else {
 			header ('location:index.php');
@@ -156,6 +224,7 @@ Class Hardware {
 
     // Main Patient Records Table [patientRecords.php]
     public function patientRecord(){
+        unset($_SESSION['message']);
         $connection = $this->openConnection();
         $sql = $connection->prepare("SELECT * FROM patient_record ORDER BY pr_id DESC");
         $sql->execute();
@@ -166,7 +235,9 @@ Class Hardware {
 
     // Update Patient Record [patientRecordsUpdate.php]
     public function getPatientRecord(){
-        $id =  trim($_GET["pr_id"]);
+        if(isset($_GET["pr_id"])){
+         $id =  trim($_GET["pr_id"]);   
+        }
         $connection = $this->openConnection();
         $sql = $connection->prepare("SELECT * FROM patient_record WHERE pr_id = '$id' ");
         $sql->execute();
@@ -732,4 +803,6 @@ Class Hardware {
         $delID = $_POST['delete_id'];
         return $delID;
     }
+
+    
 }

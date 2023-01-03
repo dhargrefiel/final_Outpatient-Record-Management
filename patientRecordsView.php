@@ -59,7 +59,7 @@
             <div class="col mr-2">
               <div class="h5 mb-0 font-weight-bold text-gray-800">
                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                <?= "P-0".$patientRecords['pr_id'] ?>
+                <?= $patientRecords['pr_id'] ?>
                 <!-- <//?php echo "P-0".$get_data->pr_id ?> -->
 
               </div>

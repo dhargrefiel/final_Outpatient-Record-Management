@@ -6,7 +6,7 @@
   echo "<script>setTimeout(function(){var tts = document.getElementsByTagName(\"title\");if(tts.length > 0)tts[0].innerHTML=\"Change Password\"; else {var tt0 = document.createElement(\"TITLE\"); tt0.innerHTML = \"My title\"; document.head.appendChild(tt0);}}, 200);</script>";
  
   
-  $changePass = $outpatient->changePassword();
+  $addAdmin = $outpatient->addAdmin();
   ob_end_flush();
 ?>
 <br>
@@ -26,7 +26,7 @@
                   </button>
           </div>';
     } ?>
-      <h2 class="h3 mb-2 text-gray-800">Change Password</h2>
+      <h2 class="h3 mb-2 text-gray-800">Add Admin User</h2>
     <!-- <//?php $attributes = array('id' => 'changepass_form', 'class' => 'form-horizontal user'); ?> -->
     <!-- <//?php echo form_open('indexcontrol/changepassupdate', $attributes); ?> -->
 
@@ -34,29 +34,27 @@
     </div>
     <form method="post">
       <div class="form-group">
-        <?php echo 'Old Password' ?>
-        <span style="margin-left: 2%;" id="eyeo" class="fa fa-eye"></span>
-        <input required id="oldpassword" type="password"
-          class="form-control  <?php echo (!empty($oldpass)) ? 'is-invalid' : ''; ?>" name="oldpass"
-          placeholder="Enter Old Password">
+        <?php echo 'Email' ?>
+        <input required id="oldpassword" type="email"
+          class="form-control  <?php echo (!empty($oldpass)) ? 'is-invalid' : ''; ?>" name="email"
+          placeholder="Enter Email">
         <div class="text-danger text-center">
           <!--<//?php echo form_error('oldpass'); ?>-->
         </div>
       </div>
       <div class="form-group">
-        <?php echo 'New Password' ?>
-        <span style="margin-left: 2%;" id="eyen" class="fa fa-eye"></span>
-        <input required id="newpassword" type="password" class="form-control  <?php echo (!empty($pass)) ? 'is-invalid' : ''; ?>"
-          name="newpass" placeholder="Enter New Password">
+        <?php echo 'Username' ?>
+        <input required id="newpassword" type="text" class="form-control  <?php echo (!empty($pass)) ? 'is-invalid' : ''; ?>"
+        name="username" placeholder="Enter Username">
         <div class="text-danger text-center">
           <!--<//?php echo form_error('pass'); ?>-->
         </div>
       </div>
       <div class="form-group">
-        <?php echo 'Confirm Password' ?>
+        <?php echo 'Password' ?>
         <span style="margin-left: 2%;" id="eyem" class="fa fa-eye"></span>
         <input required id="cpassword" type="password" class="form-control <?php echo (!empty($cpass)) ? 'is-invalid' : ''; ?>"
-          name="cpass" placeholder="Enter Confirm Password">
+          name="password" placeholder="Enter Password">
         <div class="text-danger text-center">
           <!--<//?php echo form_error('cpass'); ?>-->
         </div>
@@ -64,10 +62,10 @@
       <br>
       <a href="dashboard.php" type="button" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
       <button type="reset" class="btn btn-secondary"><i class="fas fa-sync"></i> Clear</button>
-      <button type="submit" class="btn btn-success btn-icon-split" name="changePassword">
+      <button  type="submit" class="btn btn-success btn-icon-split" name="addAdmin">
         <span class="icon text-white-100">
           <i class="fas fa-arrow-right"></i>
-          Change password
+          Add User
         </span>
       </button>
     </form>
@@ -85,28 +83,7 @@
 
 
 
-  eyeo.addEventListener('click', OldPass);
-
-  function OldPass() {
-
-    eyeo.classList.toggle('active');
-
-    (oldpwd.type == 'password') ? oldpwd.type = 'text': oldpwd.type = 'password';
-
-  }
-
-
-  eyen.addEventListener('click', NewPass);
-
-  function NewPass() {
-
-    eyen.classList.toggle('active');
-
-    (newpwd.type == 'password') ? newpwd.type = 'text': newpwd.type = 'password';
-
-  }
-
-  eyem.addEventListener('click', CPass);
+    eyem.addEventListener('click', CPass);
 
   function CPass() {
 
