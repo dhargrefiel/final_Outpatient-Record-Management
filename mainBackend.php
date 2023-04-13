@@ -3,7 +3,7 @@ session_start();
 error_reporting(E_ALL & ~E_NOTICE);
 Class Hardware {
 
-    private $server = "mysql:host=localhost;dbname=patient_records_management";
+    private $server = "mysql:host=localhost;dbname=patient_records_management"; //name of your db
 	private $user = "root";
 	private $pass = "";
 	private $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC);
@@ -27,11 +27,6 @@ Class Hardware {
 	public function closeConnection(){
 
 		$this->con = null;
-	}
-
-    
-    public function message(){
-        return $_SESSION['message'];
 	}
 
     //----------------LOGIN--------------------
@@ -74,6 +69,13 @@ Class Hardware {
 			header("location: index.php");
 		}
 	}
+    
+    public function message(){
+        if (isset($_SESSION['message'])) {
+        $message = $_SESSION['message'];
+        return $message;
+    }
+	}
 
     //----------------HEADER--------------------
 
@@ -114,7 +116,7 @@ Class Hardware {
                 $lowercase    = preg_match('@[a-z]@', $newPass);
                 $number       = preg_match('@[0-9]@', $newPass);
 
-                if (!$uppercase || !$lowercase || !$number || strlen($newPass) < 8) {\
+                if (!$uppercase || !$lowercase || !$number || strlen($newPass) < 8) {
                     header('location:changePass.php');
                     $_SESSION['message'] = "Password is not strong.";
                 } 
@@ -309,6 +311,7 @@ Class Hardware {
         return $findings;
         
     }
+    
     public function getPhysicianID(){
         $name = trim($_GET["name"]);
         $arrayString= explode(" ", $name); // split string with space (white space) as a delimiter.

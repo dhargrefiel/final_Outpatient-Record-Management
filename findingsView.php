@@ -61,7 +61,7 @@
             <div class="col mr-2">
               <div class="h5 mb-0 font-weight-bold text-gray-800">
                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                <?= "P-0".$patientRecords['pr_id'] ?>
+                <?= $patientRecords['pr_id'] ?>
               </div>
             </div>
           </div>
@@ -213,7 +213,6 @@
               <div class="modal-body text-center">
                 <p>Are you sure you want to add this record? </p>
                 <input hidden name="add_id" class="add_id">
-
               </div>
 
               <div class="modal-footer">

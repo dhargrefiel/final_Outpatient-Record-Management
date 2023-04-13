@@ -76,19 +76,19 @@ if(isset($messages)){
   <div class="box">
     <div class="section1">
       <div class="title">
-        <h6>Arendelle Memorial Hospital</h6>
-        <h2 class="alignleft">Patient Records Management</h2>
+        <h6 style="margin-left: 200px;">Arendelle Memorial Hospital</h6>
+        <h2 style="margin-left: 80px;">Patient Records Management</h2>
+        <img src="img/logo.png" style="width: 370px; margin-left: 100px;" alt="logo"> 
       </div>
       <div class="desc">
-        <h6>An automated system that enables Arendelle Memorial Hospital keeps track of all patients’ <br>
+        <h6 style="text-align: center; margin-left: 13px;">An automated system that enables Arendelle Memorial Hospital keeps track of all patients’ <br>
           details and allows easy access, retrieval and storage of the patient’s information.
         </h6>
       </div>
     </div>
     <div class="section2">
-      <div class="text-center">
-        <img src="img/logo.png" style="width: 100px;" alt="logo"> 
-        <p>Please login to your account</p>
+      <div class="text-center" style="margin-bottom: 50px; margin-top: 50px;">        
+        <h5>Please login to your account</h5>
       </div>
       <br>
       <form method="POST" action="index.php">

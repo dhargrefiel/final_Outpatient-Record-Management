@@ -12,7 +12,7 @@
 	require_once('header.php');
   require_once('footer.html');
 
-  $outpatient = new Hardware();
+ 
  
   $numberOfPatient = $outpatient->getNumberOfPatient();
   $numberOfDoctors = $outpatient->getNumberOfDoctor();
